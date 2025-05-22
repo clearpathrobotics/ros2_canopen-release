@@ -7,6 +7,13 @@ Changelog for package canopen_core
 * Add timeouts
 * Contributors: Vishnuprasad Prachandabhanu, ipa-vsp
 
+0.3.1 (2025-05-22)
+------------------
+* pre-commit update
+* fix namespace setting from bus config
+* Add namespacing support
+* Contributors: Christoph Hellmann Santos, ipa-vsp
+
 0.3.0 (2024-12-12)
 ------------------
 
