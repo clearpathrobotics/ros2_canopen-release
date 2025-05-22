@@ -9,6 +9,11 @@ Changelog for package canopen
 * Add timeouts
 * Contributors: Vishnuprasad Prachandabhanu, ipa-vsp
 
+0.3.1 (2025-05-22)
+------------------
+* update documentation
+* Contributors: ipa-vsp
+
 0.3.0 (2024-12-12)
 ------------------
 * Update CiA402 bus config docs
