@@ -5,6 +5,13 @@ Changelog for package canopen_tests
 0.2.9 (2024-04-16)
 ------------------
 
+0.3.1 (2025-05-22)
+------------------
+* update documentation
+* Add test prototype
+* Add namespacing support
+* Contributors: Christoph Hellmann Santos, ipa-vsp
+
 0.3.0 (2024-12-12)
 ------------------
 * Add new line to get checking pipeline okay

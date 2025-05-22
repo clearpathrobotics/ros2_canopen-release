@@ -5,6 +5,12 @@ Changelog for package canopen_ros2_controllers
 0.2.9 (2024-04-16)
 ------------------
 
+0.3.1 (2025-05-22)
+------------------
+* Fix command interfaces value missmatch.
+* fix header file
+* Contributors: Marco A. Gutierrez, ipa-vsp
+
 0.3.0 (2024-12-12)
 ------------------
 
