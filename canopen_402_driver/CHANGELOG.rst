@@ -8,6 +8,18 @@ Changelog for package canopen_402_driver
 * fix ci build error
 * Contributors: Vishnuprasad Prachandabhanu
 
+0.3.1 (2025-05-22)
+------------------
+* Run pre-commit process
+* Whitespace fixes.
+* Don't overwrite value, print on read
+* Attempt to make homing timeout a parameter in seconds
+  This should be changed later to support a more robust duration instead
+  of int seconds
+* Add services to disable/enable motor so that brake is usable.
+* Add services to disable/enable motor so that brake is usable.
+* Contributors: Gerry Salinas, gerry, zlizer
+
 0.3.0 (2024-12-12)
 ------------------
 * Reformat using pre-commit
