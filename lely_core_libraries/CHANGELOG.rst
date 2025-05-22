@@ -7,6 +7,19 @@ Changelog for package lely_core_libraries
 * Update the lely_core_libraries hash to the latest.
 * Contributors: Chris Lalancette, Vishnuprasad Prachandabhanu
 
+0.3.1 (2025-05-22)
+------------------
+* Do not export deprecated Lely IO library (`#318 <https://github.com/clearpathrobotics/ros2_canopen/issues/318>`_)
+* Update lely-core into CMakeLists.txt (`#307 <https://github.com/clearpathrobotics/ros2_canopen/issues/307>`_)
+  fix typo in mkjmp documentation
+  stop SYNC timer and receiver in co_sync_stop()
+  Docker - adding back support for building docker images for old GCC
+* Update .pre-commit-config.yaml (`#303 <https://github.com/clearpathrobotics/ros2_canopen/issues/303>`_)
+  * Update .pre-commit-config.yaml
+  updated libs
+  * Update cogen.py
+* Contributors: Patrick Roncagliolo, mosfet80
+
 0.3.0 (2024-12-12)
 ------------------
 * Add yaml dependency to package.xml of `lely_core_libraries` (`#290 <https://github.com/ros-industrial/ros2_canopen/issues/290>`_)
