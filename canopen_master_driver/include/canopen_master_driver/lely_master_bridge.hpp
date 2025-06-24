@@ -49,6 +49,7 @@ class LelyMasterBridge : public lely::canopen::AsyncMaster
   bool running;                      ///< Bool to indicate whether an sdo call is running
   std::condition_variable sdo_cond;  ///< Condition variable to sync service calls (one at a time)
   uint8_t node_id;                   ///< Node id of the master
+  std::chrono::milliseconds sdo_timeout;
 
 public:
   /**
@@ -63,8 +64,9 @@ public:
    */
   LelyMasterBridge(
     ev_exec_t * exec, lely::io::TimerBase & timer, lely::io::CanChannelBase & chan,
-    const std::string & dcf_txt, const std::string & dcf_bin = "", uint8_t id = (uint8_t)255U)
-  : lely::canopen::AsyncMaster(exec, timer, chan, dcf_txt, dcf_bin, id), node_id(id)
+    const std::string & dcf_txt, const std::string & dcf_bin = "", uint8_t id = (uint8_t)255U, 
+    std::chrono::milliseconds timeout = 20ms)
+  : lely::canopen::AsyncMaster(exec, timer, chan, dcf_txt, dcf_bin, id), node_id(id), sdo_timeout(timeout)
   {
   }
 
