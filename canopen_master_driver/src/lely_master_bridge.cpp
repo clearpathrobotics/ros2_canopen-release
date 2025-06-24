@@ -25,7 +25,7 @@ std::future<bool> LelyMasterBridge::async_write_sdo(uint8_t id, COData data, uin
   std::unique_lock<std::mutex> lck(sdo_mutex);
   if (running)
   {
-    sdo_cond.wait(lck);
+    sdo_cond.wait_for(lck, this->sdo_timeout);
   }
   running = true;
 
@@ -72,7 +72,7 @@ std::future<COData> LelyMasterBridge::async_read_sdo(uint8_t id, COData data, ui
   std::unique_lock<std::mutex> lck(sdo_mutex);
   if (running)
   {
-    sdo_cond.wait(lck);
+    sdo_cond.wait_for(lck, this->sdo_timeout);
   }
   running = true;
 

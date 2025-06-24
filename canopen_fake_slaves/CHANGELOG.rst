@@ -5,6 +5,9 @@ Changelog for package canopen_fake_slaves
 0.2.9 (2024-04-16)
 ------------------
 
+0.3.2 (2025-06-24)
+------------------
+
 0.3.1 (2025-05-22)
 ------------------
 * Add suported modes to `canopen_fake_slaves` README (`#337 <https://github.com/clearpathrobotics/ros2_canopen/issues/337>`_)
