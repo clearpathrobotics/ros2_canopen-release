@@ -5,6 +5,9 @@ Changelog for package canopen_ros2_control
 0.2.9 (2024-04-16)
 ------------------
 
+0.3.2 (2025-06-24)
+------------------
+
 0.3.1 (2025-05-22)
 ------------------
 * Fixing ID type in storage of ros2_control system.
