@@ -183,7 +183,7 @@ std::future<bool> LelyDriverBridge::async_sdo_write(COData data)
   std::unique_lock<std::mutex> lck(sdo_mutex);
   if (running)
   {
-    sdo_cond.wait(lck);
+    sdo_cond.wait_for(lck, this->sdo_timeout);
   }
   running = true;
 
@@ -242,7 +242,7 @@ std::future<COData> LelyDriverBridge::async_sdo_read(COData data)
   std::unique_lock<std::mutex> lck(sdo_mutex);
   if (running)
   {
-    sdo_cond.wait(lck);
+    sdo_cond.wait_for(lck, this->sdo_timeout);
   }
   running = true;
 
