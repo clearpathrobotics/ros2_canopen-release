@@ -446,7 +446,7 @@ public:
     std::unique_lock<std::mutex> lck(sdo_mutex);
     if (running)
     {
-      sdo_cond.wait(lck);
+      sdo_cond.wait_for(lck, this->sdo_timeout);
     }
     running = true;
 
@@ -532,7 +532,7 @@ public:
     std::unique_lock<std::mutex> lck(sdo_mutex);
     if (running)
     {
-      sdo_cond.wait(lck);
+      sdo_cond.wait_for(lck, this->sdo_timeout);
     }
     running = true;
 
@@ -555,6 +555,7 @@ public:
       this->sdo_cond.notify_one();
       return prom->get_future();
     }
+    ::std::error_code ec;
     this->SubmitRead<T>(
       idx, subidx,
       [this, prom](uint8_t id, uint16_t idx, uint8_t subidx, ::std::error_code ec, T value) mutable
@@ -574,7 +575,9 @@ public:
         this->running = false;
         this->sdo_cond.notify_one();
       },
-      this->sdo_timeout);
+      this->sdo_timeout,
+      ec);
+    if (ec) throw lely::canopen::SdoError(0, idx, subidx, ec, "LelyDriverBridge::async_sdo_read_typed");
     return prom->get_future();
   }
 
@@ -679,7 +682,7 @@ public:
       return true;
     }
     std::unique_lock<std::mutex> lck(boot_mtex);
-    boot_cond.wait_for(lck, boot_timeout);
+    boot_cond.wait_for(lck, this->boot_timeout);
     if ((boot_status != 0) && (boot_status != 'L'))
     {
       throw std::system_error(boot_status, LelyBridgeErrCategory(), "Boot Issue");
@@ -748,6 +751,7 @@ public:
   template <typename T>
   void submit_read(COData data)
   {
+    ::std::error_code ec;
     this->SubmitRead<T>(
       data.index_, data.subindex_,
       [this](uint8_t id, uint16_t idx, uint8_t subidx, ::std::error_code ec, T value) mutable
@@ -769,7 +773,9 @@ public:
         this->running = false;
         this->sdo_cond.notify_one();
       },
-      this->sdo_timeout);
+      this->sdo_timeout,
+      ec);
+    if (ec) throw lely::canopen::SdoError(0, data.index_, data.subindex_, ec, "LelyDriverBridge::submit_read");
   }
 
   template <typename T>
