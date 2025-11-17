@@ -422,7 +422,7 @@ public:
     }
     pdo_map_ = dictionary_->createPDOMapping();
     sdo_timeout = timeout;
-    boot_timeout = timeout;
+    this->boot_timeout = boot_timeout;
   }
 
   /**
@@ -683,9 +683,15 @@ public:
     }
     std::unique_lock<std::mutex> lck(boot_mtex);
     boot_cond.wait_for(lck, this->boot_timeout);
-    if ((boot_status != 0) && (boot_status != 'L'))
+    if ((boot_status != 0) &&
+        (boot_status != 'B') && // No response received for upload request of object 1000
+        (boot_status != 'L') && // NMT slave was initially operational.
+        (boot_status != 'M') && // Value of object 1018:02 from CANopen device is different to value in object 1F86 (Product code)
+        (boot_status != 'N') && // Value of object 1018:03 from CANopen device is different to value in object 1F87 (Revision number).
+        (boot_status != 'O')    // Value of object 1018:04 from CANopen device is different to value in object 1F88 (Serial number).
+        )
     {
-      throw std::system_error(boot_status, LelyBridgeErrCategory(), "Boot Issue");
+      throw std::system_error(boot_status, LelyBridgeErrCategory(), ("Boot Issue " + boot_status));
     }
     else
     {
