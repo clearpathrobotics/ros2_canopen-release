@@ -118,6 +118,9 @@ void NodeCanopenBaseDriver<rclcpp_lifecycle::LifecycleNode>::configure(bool call
   {
   }
   boot_timeout_ms_ = boot_timeout_ms.value_or(20);
+  RCLCPP_INFO_STREAM(
+    this->node_->get_logger(),
+    "Boot timeout " << this->boot_timeout_ms_ << "ms");
 }
 template <>
 void NodeCanopenBaseDriver<rclcpp::Node>::configure(bool called_from_base)
@@ -205,6 +208,9 @@ void NodeCanopenBaseDriver<rclcpp::Node>::configure(bool called_from_base)
   {
   }
   boot_timeout_ms_ = boot_timeout_ms.value_or(20);
+  RCLCPP_INFO_STREAM(
+    this->node_->get_logger(),
+    "Boot timeout " << this->boot_timeout_ms_ << "ms");
 }
 
 template <class NODETYPE>
