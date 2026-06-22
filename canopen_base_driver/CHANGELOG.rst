@@ -7,6 +7,9 @@ Changelog for package canopen_base_driver
 * Add timeouts
 * Contributors: Vishnuprasad Prachandabhanu
 
+0.4.0 (2026-06-22)
+------------------
+
 0.3.3 (2025-11-17)
 ------------------
 * Merge pull request `#2 <https://github.com/clearpathrobotics/ros2_canopen/issues/2>`_ from clearpathrobotics/fix/boot_timeout
