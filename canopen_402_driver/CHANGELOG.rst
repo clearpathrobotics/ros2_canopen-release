@@ -8,6 +8,9 @@ Changelog for package canopen_402_driver
 * fix ci build error
 * Contributors: Vishnuprasad Prachandabhanu
 
+0.4.0 (2026-06-22)
+------------------
+
 0.3.3 (2025-11-17)
 ------------------
 
